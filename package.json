@@ -1,0 +1,17 @@
+{
+  "name": "reactng",
+  "version": "1.0.0",
+  "description": "React.js vs Angular2 smackdown",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "backend": "json-server --watch backend/db.json --delay 2000"
+  },
+  "keywords": [
+    "react.js",
+    "Angular2",
+    "compare"
+  ],
+  "author": "JavascriptMick",
+  "license": "MIT"
+}
