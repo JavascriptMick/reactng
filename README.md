@@ -17,7 +17,7 @@ yarn (or npm install)
 ng serve
 ```
 
-## Install and run React Example (TODO)
+## Install and run React Example
 ```
 cd react-web
 yarn (or npm install)

@@ -8,7 +8,7 @@ import { Note } from '../notes.model';
 
 @Injectable()
 export class NotesDataService {
-    private API_ROOT: String = "http://localhost:3000";
+    private API_ROOT: String = "http://localhost:4000";
     private JSON_HEADER = { headers: new Headers({ 'Content-Type': 'application/json' }) };
     
     constructor(public http: Http) { }

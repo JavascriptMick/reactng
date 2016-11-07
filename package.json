@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "backend": "json-server --watch backend/db.json --delay 2000"
+    "backend": "json-server --watch backend/db.json --delay 2000 -p 4000"
   },
   "keywords": [
     "react.js",
