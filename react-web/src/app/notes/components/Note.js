@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Note.css';
-import draggable from '../shared/draggable'
+import draggable from '../../shared/draggable'
 
 //extend the textarea with draggable behaviour by employing a Higher Order Component function (HOC) https://medium.com/@dan_abramov/mixins-are-dead-long-live-higher-order-components-94a0d2f9e750
 const PositionedTextArea = (props) => { return ( <textarea  {...props} />); }
@@ -8,11 +8,15 @@ let DraggableTextArea = draggable(PositionedTextArea)
 
 class Note extends Component {
   handleChangeNoteText($event){
-    this.props.changeNoteText($event.target.value);
+    if($event.target.value !== this.props.text){
+      this.props.changeNoteText($event.target.value);
+    }
   }
 
-  handleChangeNotePosition($event){
-    this.props.changeNotePosition($event.target.value);
+  handleChangeNotePosition(newPosition){
+    if(newPosition.left !== this.props.left || newPosition.top !== this.props.top){
+      this.props.changeNotePosition(newPosition);
+    }
   }
 
   render(){

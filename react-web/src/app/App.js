@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Notes from './notes/Notes';
+import NotesContainer from './notes/containers/NotesContainer';
 
 class App extends Component {
   title = 'React Web - ReactNg';
@@ -10,7 +10,7 @@ class App extends Component {
         <h1>
           {this.title}
         </h1>
-        <Notes/>
+        <NotesContainer/>
       </div>
     );
   }
