@@ -26,16 +26,16 @@ export class NotesComponent implements OnInit {
     this.notesService.addNote("", colour, 200, 100);
   }
   
-  onChangeNoteText(newText: string, note: Note){
-    this.notesService.changeNoteText(newText, note);
+  onChangeNoteText(newText: string, id: number){
+    this.notesService.updateNoteText(newText, id);
   }
 
-  onChangeNotePosition(newPosition: any, note: Note){
-    this.notesService.changeNotePosition(newPosition.left, newPosition.top, note);
+  onChangeNotePosition(newPosition: any, id: number){
+    this.notesService.updateNotePosition(newPosition.left, newPosition.top, id);
   }
 
   ngOnInit() {
-    this.notesService.initialise();
+    this.notesService.initNotes();
   }
 
 }

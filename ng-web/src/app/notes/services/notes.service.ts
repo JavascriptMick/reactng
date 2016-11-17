@@ -18,18 +18,20 @@ export class NotesService {
     getNotes(): Observable<Note[]>{
       return this.store.select<Note[]>('notes');
     }
+
     addNote(text: string, colour: string, left: number, top: number): void{
       this.store.dispatch({ type: "ADD_NOTE", payload: {text, colour, left, top, id:UUID.UUID()} });
     }
-    changeNoteText(text: string, note: Note): void{console.log('changeNoteText')
-      this.store.dispatch({type: "UPDATE_NOTE_TEXT", payload: {id: note.id, text: text}})
-      //this.store.dispatch({type: "UPDATE_NOTE_TEXT", payload: {note, text}})
-    }
-    changeNotePosition(left: number, top: number, note: Note): void{
-      this.store.dispatch({type: "UPDATE_NOTE_POSITION", payload: {id: note.id, left: left, top: top}})
+
+    updateNoteText(text: string, id: number): void{
+      this.store.dispatch({type: "UPDATE_NOTE_TEXT", payload: {id, text: text}})
     }
     
-    initialise(): void{
+    updateNotePosition(left: number, top: number, id: number): void{
+      this.store.dispatch({type: "UPDATE_NOTE_POSITION", payload: {id, left: left, top: top}})
+    }
+    
+    initNotes(): void{
         this.store.dispatch({ type: "INIT_NOTES", payload: { } });
     }
 

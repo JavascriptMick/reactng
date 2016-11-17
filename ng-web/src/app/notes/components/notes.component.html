@@ -9,7 +9,7 @@
   [left] = note.left
   [top] = note.top
   [disabled] = note.dirty
-  (changeNoteText) = "onChangeNoteText($event, note)"
-  (changeNotePosition) = "onChangeNotePosition($event, note)"></app-note>
+  (changeNoteText) = "onChangeNoteText($event, note.id)"
+  (changeNotePosition) = "onChangeNotePosition($event, note.id)"></app-note>
   <!--{{$notes | async | json}}-->
 </div>
