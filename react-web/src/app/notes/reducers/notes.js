@@ -1,28 +1,6 @@
 import note from './note';
 
-const notes = (notes = [
-    {
-      "id": 1,
-      "text": "ReactNg",
-      "colour": "red",
-      "left": 200,
-      "top": 100
-    },
-    {
-      "id": 2,
-      "text": "Comparing React and Angular in a non trivial app!",
-      "colour": "blue",
-      "left": 300,
-      "top": 200
-    },
-    {
-      "id": 3,
-      "text": "Companion Video available soon.",
-      "colour": "yellow",
-      "left": 400,
-      "top": 300
-    }
-], action) => {
+const notes = (notes = [], action) => {
   // console.log(`notes.reducer action:${JSON.stringify(action)} notes:${JSON.stringify(notes)}`);
   switch(action.type){
     case "ADD_NOTE":

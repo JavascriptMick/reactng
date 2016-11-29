@@ -3,6 +3,10 @@ import './Notes.css';
 import Note from './Note';
 
 class Notes extends Component {  
+  componentDidMount(){
+    this.props.onInit();
+  }
+  
   render() {
     const NoteComponents = this.props.notes.map((note) => {
       return (
@@ -13,6 +17,7 @@ class Notes extends Component {
           colour={note.colour}
           left={note.left}
           top={note.top}
+          disabled={note.dirty}
           key={note.id.toString()}/>
       );
     })

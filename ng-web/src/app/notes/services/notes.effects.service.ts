@@ -23,7 +23,7 @@ export class NotesEffectsService {
     .mergeMap(notes => Observable.from(notes))
     .filter((note:Note) => {return (note.dirty==true)})
     .switchMap((updatedNote:Note) => this.notesDataService.addOrUpdateNote(updatedNote)
-      .map((responseNote:Note) => ({ type: "UPDATE_NOTE_FROM_SERVER", payload: { note: responseNote } }))
+      .map((responseNote:Note) => ({ type: "UPDATE_NOTE_FROM_SERVER", payload: { note: responseNote } }))//TODO - change tto payload: responsenote
       .catch(() => Observable.of({ type: "UPDATE_FAILED" }))
     )
 
