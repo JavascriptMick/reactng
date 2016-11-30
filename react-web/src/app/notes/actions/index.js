@@ -28,7 +28,6 @@ export const initNotes = () => {
 };
 
 export const updateNoteFromServer = (note) => {
-  console.log(`Action Creator updateNoteFromServer note:${JSON.stringify(note)}`);
   return {
     type: "UPDATE_NOTE_FROM_SERVER",
     payload: note 

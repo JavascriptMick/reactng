@@ -1,5 +1,5 @@
 const note = (note = null, action) => {
-  console.log(`note.reducer note:${JSON.stringify(note)} action:${JSON.stringify(action)}`);
+  // console.log(`note.reducer note:${JSON.stringify(note)} action:${JSON.stringify(action)}`);
   switch(action.type){
     case "ADD_NOTE":
       return Object.assign({}, action.payload, {dirty: true});

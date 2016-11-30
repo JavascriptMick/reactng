@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { updateNoteText, updateNotePosition, initNotes } from '../actions'
+import { updateNoteText, updateNotePosition, initNotes, addNote } from '../actions'
 import Notes from '../components/Notes'
 
 const mapStateToProps = (state) => {
@@ -12,6 +12,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onChangeNoteText: (id, newText) => {
       dispatch(updateNoteText(newText, id));
+    },
+    onAddNote: (colour) => {
+      dispatch(addNote("", colour, 200, 100));
     },
     onChangeNotePosition: (id, newPosition) => {
       dispatch(updateNotePosition(newPosition.left, newPosition.top, id));

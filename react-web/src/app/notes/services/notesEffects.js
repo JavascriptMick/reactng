@@ -25,12 +25,11 @@ function* init(action) {
 //spin around posting dirty notes to the server and dispatching an update
 function* postToBackend() {
   try{
-    var x = 20
-    while(x-- > 1) {
+    while(true) {
       let notes = yield select((state) => state.notes); // <-- ask middleware for the notes state
       let filteredNotes = notes.filter(note => (note.dirty===true));
       for(var i = 0; i < filteredNotes.length; i++){
-        let updatedNote = yield call (notesDataService.addOrUpdateNote, notes[i]);
+        let updatedNote = yield call (notesDataService.addOrUpdateNote, filteredNotes[i]);
         yield put(updateNoteFromServer(updatedNote))
       }
       yield call(delay, 1000);  //debounce
@@ -40,24 +39,11 @@ function* postToBackend() {
    }
 }
 
-export function* helloSaga() {
-  //debugger;
-  console.log('Hello Sagas!')
-}
-
 function* notesEffects() {
   yield [
-    helloSaga(),
     watchInit(),
     postToBackend()
   ]
 }
-
-// export default function* rootSaga() {
-//   yield [
-//     helloSaga(),
-//     watchIncrementAsync()
-//   ]
-// }
  
 export default notesEffects;

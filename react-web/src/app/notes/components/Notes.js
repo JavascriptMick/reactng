@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Notes.css';
 import Note from './Note';
+import AddButton from './AddButton';
 
 class Notes extends Component {  
   componentDidMount(){
@@ -24,12 +25,10 @@ class Notes extends Component {
 
     return(
       <div>
-      {/*
-        <AddButton onAdd={this.props.handleOnAdd.bind(this)} colour="yellow"/>
-        <AddButton onAdd={this.props.handleOnAdd.bind(this)} colour="red"/>
-        <AddButton onAdd={this.props.handleOnAdd.bind(this)} colour="green"/>
-        <AddButton onAdd={this.props.handleOnAdd.bind(this)} colour="blue"/>
-      */}
+        <AddButton add={this.props.onAddNote.bind(this)} colour="yellow"/>
+        <AddButton add={this.props.onAddNote.bind(this)} colour="red"/>
+        <AddButton add={this.props.onAddNote.bind(this)} colour="green"/>
+        <AddButton add={this.props.onAddNote.bind(this)} colour="blue"/>
         {NoteComponents}
       </div>
       );
