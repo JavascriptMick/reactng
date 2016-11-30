@@ -10,7 +10,7 @@ import { NotesService } from './services/notes.service';
 import { NotesDataService } from './services/notes.data.service';
 import { UUID } from 'angular2-uuid';
 
-import { NotesEffectsService } from './services/notes.effects.service';
+import { NotesEffects } from './effects/notes.effects';
 import { notes } from './reducers/notes.reducer';
 
 import { Draggable } from '../shared/draggable';
@@ -20,7 +20,7 @@ import { Draggable } from '../shared/draggable';
   imports: [ 
     BrowserModule,
     StoreModule.provideStore({notes}, {notes:[]}),
-    EffectsModule.run(NotesEffectsService)
+    EffectsModule.run(NotesEffects)
     ],
   exports: [NotesComponent],
   declarations: [AddButtonComponent, NoteComponent, NotesComponent, Draggable ],

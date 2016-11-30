@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Http, Response, Headers, RequestOptions} from '@angular/http';
-import { NotesDataService } from './notes.data.service';
+import { NotesDataService } from '../services/notes.data.service';
 import { Note, AppStateNotes } from '../notes.model';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
@@ -15,7 +15,7 @@ import { Action } from '@ngrx/store';
 import { Effect, Actions } from '@ngrx/effects'
 
 @Injectable()
-export class NotesEffectsService {
+export class NotesEffects {
   constructor(private notesDataService: NotesDataService, private actions$: Actions, private store$: Store<AppStateNotes>) {}
 
     @Effect() postToBackend$ = this.store$

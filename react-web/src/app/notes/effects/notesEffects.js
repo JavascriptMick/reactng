@@ -1,7 +1,7 @@
 import { takeLatest, delay } from 'redux-saga'
 import { call, put, select } from 'redux-saga/effects'
 import { fetchFailed, addNoteFromServer, updateNoteFromServer } from '../actions'
-import NotesDataService from './notes.data.service'
+import NotesDataService from '../services/notes.data.service'
 
 var notesDataService = new NotesDataService();
 

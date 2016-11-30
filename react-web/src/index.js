@@ -7,7 +7,7 @@ import createSagaMiddleware from 'redux-saga'
 import App from './app/App';
 import notesApp from './app/notes/reducers'
 import './index.css';
-import notesEffects from './app/notes/services/notesEffects'
+import notesEffects from './app/notes/effects/notesEffects'
 
 const sagaMiddleWare = createSagaMiddleware(); 
 
