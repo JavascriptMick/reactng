@@ -1,4 +1,4 @@
-import NotesDataService from './notes.data.service'
+import NotesDataService from './NotesDataService'
 
 
 it('updates a note', () => {

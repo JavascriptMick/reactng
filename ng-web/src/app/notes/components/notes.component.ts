@@ -10,7 +10,6 @@ import { NotesService } from '../services/notes.service'
   selector: 'app-notes',
   templateUrl: 'notes.component.html',
   styleUrls: ['notes.component.css'],
-  providers: [NotesService],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NotesComponent implements OnInit {
@@ -22,15 +21,15 @@ export class NotesComponent implements OnInit {
     this.$notes = this.notesService.getNotes();
   }
   
-  onAddNote(colour){
+  onAddNote(colour: string){
     this.notesService.addNote("", colour, 200, 100);
   }
   
-  onChangeNoteText(newText: string, id: number){
+  onChangeNoteText(newText: string, id: string){
     this.notesService.updateNoteText(newText, id);
   }
 
-  onChangeNotePosition(newPosition: any, id: number){
+  onChangeNotePosition(newPosition: any, id: string){
     this.notesService.updateNotePosition(newPosition.left, newPosition.top, id);
   }
 

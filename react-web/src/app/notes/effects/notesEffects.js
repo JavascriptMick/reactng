@@ -1,13 +1,14 @@
 import { takeLatest, delay } from 'redux-saga'
 import { call, put, select } from 'redux-saga/effects'
-import { fetchFailed, addNoteFromServer, updateNoteFromServer } from '../actions'
-import NotesDataService from '../services/notes.data.service'
+import { fetchFailed, addNoteFromServer, updateNoteFromServer } from '../actions/Actions'
+import NotesDataService from '../services/NotesDataService'
+import {ActionTypes} from '../actions/Actions'
 
 var notesDataService = new NotesDataService();
 
 
 export function* watchInit() {
-  yield takeLatest('INIT_NOTES', init)
+  yield takeLatest(ActionTypes.INIT_NOTES, init)
 }
 
 // worker Saga: will be fired on INIT_NOTES action 

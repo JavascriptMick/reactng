@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
 import { Store } from '@ngrx/store';
+
+import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/mergeMap';
+
 import { Note, AppStateNotes } from '../notes.model';
 import { NotesDataService } from './notes.data.service';
-import { UUID } from 'angular2-uuid';
+import { addNote, updateNoteText, updateNotePosition, initNotes } from '../actions/actions';
 
 @Injectable()
 export class NotesService {
@@ -20,19 +22,19 @@ export class NotesService {
     }
 
     addNote(text: string, colour: string, left: number, top: number): void{
-      this.store.dispatch({ type: "ADD_NOTE", payload: {text, colour, left, top, id:UUID.UUID()} });
+      this.store.dispatch(addNote(text, colour, left, top));
     }
 
-    updateNoteText(text: string, id: number): void{
-      this.store.dispatch({type: "UPDATE_NOTE_TEXT", payload: {id, text: text}})
+    updateNoteText(text: string, id: string): void{
+      this.store.dispatch(updateNoteText(text, id));
     }
     
-    updateNotePosition(left: number, top: number, id: number): void{
-      this.store.dispatch({type: "UPDATE_NOTE_POSITION", payload: {id, left: left, top: top}})
+    updateNotePosition(left: number, top: number, id: string): void{
+      this.store.dispatch(updateNotePosition(left, top, id))
     }
     
     initNotes(): void{
-        this.store.dispatch({ type: "INIT_NOTES", payload: { } });
+        this.store.dispatch(initNotes());
     }
 
 }

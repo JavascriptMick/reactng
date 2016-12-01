@@ -1,4 +1,7 @@
-import {default as UUID} from "node-uuid";
+import { Action } from '@ngrx/store';
+import { UUID } from 'angular2-uuid';
+
+import { Note } from '../notes.model';
 
 export const ActionTypes= {
   ADD_NOTE: "ADD_NOTE",
@@ -11,48 +14,55 @@ export const ActionTypes= {
   FETCH_FAILED: "FETCH_FAILED"
 }
 
-export const addNote = (text, colour, left, top) => {
+export const addNote = (text: string, colour: string, left: number, top: number): Action => {
   return {
     type: ActionTypes.ADD_NOTE,
-    payload:{text, colour, left, top, id:UUID.v4()}
+    payload:{text, colour, left, top, id:UUID.UUID()}
   };
 };
 
-export const updateNoteText = (text, id) => {
+export const updateNoteText = (text: string, id: string): Action => {
   return {
     type: ActionTypes.UPDATE_NOTE_TEXT,
     payload:{id, text} 
   };
 };
 
-export const updateNotePosition = (left, top, id) => {
+export const updateNotePosition = (left: number, top: number, id: string): Action => {
   return {
     type: ActionTypes.UPDATE_NOTE_POSITION,
     payload:{ id, left, top}
   };
 };
 
-export const initNotes = () => {
+export const initNotes = (): Action => {
     return {
       type: ActionTypes.INIT_NOTES
     };
 };
 
-export const updateNoteFromServer = (note) => {
+export const updateNoteFromServer = (note: Note): Action => {
   return {
     type: ActionTypes.UPDATE_NOTE_FROM_SERVER,
     payload: note 
   };
 };
 
-export const addNoteFromServer = (note) => {
+export const updateFailed = (): Action => {
+  return {
+    type: ActionTypes.UPDATE_FAILED,
+    payload: null 
+  };
+};
+
+export const addNoteFromServer = (note: Note): Action => {
   return {
     type: ActionTypes.ADD_NOTE_FROM_SERVER, 
     payload: note
   };
 };
 
-export const fetchFailed = (message) => {
+export const fetchFailed = (message: string): Action => {
   return {
     type: ActionTypes.FETCH_FAILED,
     payload: message
