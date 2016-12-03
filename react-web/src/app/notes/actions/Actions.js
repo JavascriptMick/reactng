@@ -1,5 +1,8 @@
 import {default as UUID} from "node-uuid";
 
+
+
+
 export const ActionTypes= {
   ADD_NOTE: "ADD_NOTE",
   UPDATE_NOTE_TEXT: "UPDATE_NOTE_TEXT",
@@ -42,6 +45,13 @@ export const updateNoteFromServer = (note) => {
   return {
     type: ActionTypes.UPDATE_NOTE_FROM_SERVER,
     payload: note 
+  };
+};
+
+export const updateFailed = (message) => {
+  return {
+    type: ActionTypes.UPDATE_FAILED,
+    payload: message
   };
 };
 

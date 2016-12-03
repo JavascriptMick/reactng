@@ -2,8 +2,7 @@ import 'whatwg-fetch'
 
 class NotesDataService {
     API_ROOT = "http://localhost:4000";
-    JSON_HEADER = { headers: new Headers({ 'Content-Type': 'application/json' }) };
-
+    
     getNotes = () => {
       console.log(`fetching ${this.API_ROOT}/notes`)
       return fetch(`${this.API_ROOT}/notes`)

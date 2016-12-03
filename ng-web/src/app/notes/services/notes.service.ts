@@ -1,13 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 
-import { Subject } from 'rxjs/Subject';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/mergeMap';
 
-import { Note, AppStateNotes } from '../notes.model';
-import { NotesDataService } from './notes.data.service';
 import { addNote, updateNoteText, updateNotePosition, initNotes } from '../actions/actions';
+import { Note, AppStateNotes } from '../notes.model';
 
 @Injectable()
 export class NotesService {
@@ -21,12 +19,12 @@ export class NotesService {
       return this.store.select<Note[]>('notes');
     }
 
-    addNote(text: string, colour: string, left: number, top: number): void{
-      this.store.dispatch(addNote(text, colour, left, top));
-    }
-
     updateNoteText(text: string, id: string): void{
       this.store.dispatch(updateNoteText(text, id));
+    }
+    
+    addNote(text: string, colour: string, left: number, top: number): void{
+      this.store.dispatch(addNote(text, colour, left, top));
     }
     
     updateNotePosition(left: number, top: number, id: string): void{
@@ -36,5 +34,4 @@ export class NotesService {
     initNotes(): void{
         this.store.dispatch(initNotes());
     }
-
 }

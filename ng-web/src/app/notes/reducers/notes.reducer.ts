@@ -1,11 +1,10 @@
 import { Action } from '@ngrx/store';
 
-import { Note } from '../notes.model';
 import { note } from './note.reducer';
 import { ActionTypes } from '../actions/actions';
+import { Note } from '../notes.model';
 
 export const notes = (notes: Array<Note> = [], action: Action) => {
-  // console.log(`notes.reducer action:${JSON.stringify(action)}`);
   switch(action.type){
     case ActionTypes.ADD_NOTE:
     case ActionTypes.ADD_NOTE_FROM_SERVER:

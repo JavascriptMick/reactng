@@ -23,17 +23,17 @@ function* init(action) {
    }
 }
 
-//spin around posting dirty notes to the server and dispatching an update
+//spin every second and post dirty notes to the server,  dispatching an update action when done.
 function* postToBackend() {
   try{
     while(true) {
-      let notes = yield select((state) => state.notes); // <-- ask middleware for the notes state
+      let notes = yield select((state) => state.notes);   // ask middleware for the notes state
       let filteredNotes = notes.filter(note => (note.dirty===true));
-      for(var i = 0; i < filteredNotes.length; i++){
+      for(var i = 0; i < filteredNotes.length; i++){      //treat each note seperately
         let updatedNote = yield call (notesDataService.addOrUpdateNote, filteredNotes[i]);
         yield put(updateNoteFromServer(updatedNote))
       }
-      yield call(delay, 1000);  //debounce
+      yield call(delay, 1000);                            //wait a second
     }
   } catch (e) {
       yield put(fetchFailed(e.message));

@@ -1,7 +1,6 @@
 import { ActionTypes } from '../actions/Actions'
 
 const note = (note = null, action) => {
-  // console.log(`note.reducer note:${JSON.stringify(note)} action:${JSON.stringify(action)}`);
   switch(action.type){
     case ActionTypes.ADD_NOTE:
       return Object.assign({}, action.payload, {dirty: true});

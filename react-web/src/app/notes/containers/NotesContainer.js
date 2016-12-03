@@ -1,4 +1,5 @@
 import { connect } from 'react-redux'
+
 import { updateNoteText, updateNotePosition, initNotes, addNote } from '../actions/Actions'
 import Notes from '../components/Notes'
 

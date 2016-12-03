@@ -1,8 +1,7 @@
-import { ActionTypes } from '../actions/Actions'
 import note from './note';
+import { ActionTypes } from '../actions/Actions'
 
 const notes = (notes = [], action) => {
-  // console.log(`notes.reducer action:${JSON.stringify(action)} notes:${JSON.stringify(notes)}`);
   switch(action.type){
     case ActionTypes.ADD_NOTE:
     case ActionTypes.ADD_NOTE_FROM_SERVER:

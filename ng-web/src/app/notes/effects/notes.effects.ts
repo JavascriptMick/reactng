@@ -14,26 +14,27 @@ import 'rxjs/add/operator/filter';
 
 import { NotesDataService } from '../services/notes.data.service';
 import { Note, AppStateNotes } from '../notes.model';
-import { updateNoteFromServer, fetchFailed, updateFailed, addNoteFromServer } from '../actions/actions';
+import { ActionTypes, updateNoteFromServer, fetchFailed, updateFailed, addNoteFromServer } from '../actions/actions';
 
 
 @Injectable()
 export class NotesEffects {
   constructor(private notesDataService: NotesDataService, private actions$: Actions, private store$: Store<AppStateNotes>) {}
 
+    //subscribe to state changes and post dirty notes to the server, dispatch an update action when done. 
     @Effect() postToBackend$ = this.store$
     .map(updatedAppState => updatedAppState.notes)
-    .mergeMap(notes => Observable.from(notes))
-    .filter((note:Note) => {return (note.dirty==true)})
+    .mergeMap(notes => Observable.from(notes))  //treat each note seperately
+    .filter((note:Note) => (note.dirty==true))
     .switchMap((updatedNote:Note) => this.notesDataService.addOrUpdateNote(updatedNote)
       .map((responseNote:Note) => (updateNoteFromServer(responseNote)))
-      .catch(() => Observable.of(updateFailed()))
+      .catch((e) => Observable.of(updateFailed(e.message)))
     )
 
   @Effect() init$ = this.actions$
-    .ofType('INIT_NOTES')
+    .ofType(ActionTypes.INIT_NOTES)
     .switchMap(() => this.notesDataService.getNotes().mergeMap(notes => Observable.from(notes))
       .map(responseNote => (addNoteFromServer(responseNote)))
-      .catch((message) => Observable.of(fetchFailed(message)))
+      .catch((e) => Observable.of(fetchFailed(e.message)))
     )
 }

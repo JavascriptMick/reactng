@@ -48,10 +48,10 @@ export const updateNoteFromServer = (note: Note): Action => {
   };
 };
 
-export const updateFailed = (): Action => {
+export const updateFailed = (message: string): Action => {
   return {
     type: ActionTypes.UPDATE_FAILED,
-    payload: null 
+    payload: message 
   };
 };
 

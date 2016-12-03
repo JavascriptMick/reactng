@@ -15,8 +15,6 @@ export class NoteComponent {
   @Output() changeNoteText = new EventEmitter(false);
   @Output() changeNotePosition = new EventEmitter(false);
 
-  constructor() {}
-
   handleChangeNotePosition(newPosition){
     if(newPosition.left != this.left || newPosition.top != this.top){
       this.changeNotePosition.emit(newPosition)

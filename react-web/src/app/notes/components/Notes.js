@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import './Notes.css';
 import Note from './Note';
 import AddButton from './AddButton';
@@ -29,6 +30,7 @@ class Notes extends Component {
         <AddButton add={this.props.onAddNote.bind(this)} colour="red"/>
         <AddButton add={this.props.onAddNote.bind(this)} colour="green"/>
         <AddButton add={this.props.onAddNote.bind(this)} colour="blue"/>
+
         {NoteComponents}
       </div>
       );
